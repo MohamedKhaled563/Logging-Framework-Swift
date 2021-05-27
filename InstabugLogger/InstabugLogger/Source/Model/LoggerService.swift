@@ -11,16 +11,47 @@ import CoreData
 struct LoggerService {
     var savedElements: [LogElement]?
     let validation = LoggerStorageValidationService()
-    var mainContext: NSManagedObjectContext!
-    var backgroundContext: NSManagedObjectContext!
     
-    init(mainContext: NSManagedObjectContext, backgroundContext: NSManagedObjectContext) {
-        self.mainContext = mainContext
-        self.backgroundContext = backgroundContext
+    init() {
         backgroundContext.performAndWait {
             savedElements = fetch()
         }
     }
+    
+    //Single background context to be shared between all background threads
+    lazy var backgroundContext: NSManagedObjectContext = {
+        let newbackgroundContext = persistentContainer.newBackgroundContext()
+        newbackgroundContext.automaticallyMergesChangesFromParent = true
+        return newbackgroundContext
+    }()
+    // MARK: - Core Data stack
+
+    lazy var persistentContainer: NSPersistentContainer = {
+        let instabugLoggerBundle = Bundle(identifier: "com.MohamedKhaled.InstabugLogger")
+        let modelURL = instabugLoggerBundle!.url(forResource: "Log", withExtension: ".momd")
+        let container = NSPersistentContainer(name: "Log", managedObjectModel: NSManagedObjectModel(contentsOf: modelURL!)!)
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    // MARK: - Core Data Saving support
+    
+    mutating func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+
     mutating func insert(message: String, level: Int64, timeSpam: Date) {
         backgroundContext.performAndWait {
             let logElement = LogElement(context: backgroundContext)
@@ -71,7 +102,7 @@ struct LoggerService {
         }
     }
     
-    func deleteEarliestElement(_ elements: inout [LogElement]) {
+    mutating func deleteEarliestElement(_ elements: inout [LogElement]) {
         backgroundContext.performAndWait {
             elements.sort {
                 $0.timestamp! > $1.timestamp!

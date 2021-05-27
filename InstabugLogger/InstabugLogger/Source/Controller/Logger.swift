@@ -9,12 +9,9 @@ import Foundation
 import CoreData
 
 struct Logger {
-    var loggerService: LoggerService!
+    var loggerService = LoggerService()
     let validation = LoggerLogicValidationService()
     
-    init(mainContext: NSManagedObjectContext, backgroundContext: NSManagedObjectContext) {
-        loggerService = LoggerService(mainContext: mainContext, backgroundContext: backgroundContext)
-    }
     mutating func addLogElement(message: String, level: Int64) {
         var verifiedMessage = message
         validateMessage(message: &verifiedMessage)

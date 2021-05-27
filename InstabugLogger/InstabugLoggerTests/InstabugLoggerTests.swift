@@ -17,7 +17,6 @@ class InstabugLoggerTests: XCTestCase {
         let container = NSPersistentContainer(name: "Log")
         let mainContext = container.viewContext
         let backgroundContext = container.newBackgroundContext()
-        InstabugLogger.shared.configure(mainContext: mainContext, backgroundContext: backgroundContext)
     }
 
     override func tearDownWithError() throws {
@@ -42,7 +41,7 @@ class InstabugLoggerTests: XCTestCase {
         var result = false
         if let safeLog = log {
             if (safeLog.count == 0) {
-                result = false
+                result = true
             }
         }
         if (log == nil) {
@@ -51,18 +50,24 @@ class InstabugLoggerTests: XCTestCase {
         XCTAssertTrue(result)
     }
     
+    
     func testAddingMessages() {
         InstabugLogger.shared.deleteAllLogs()
         InstabugLogger.shared.log(1, message: "Message1")
-        let log = InstabugLogger.shared.fetchAllLogs()
+        var log = InstabugLogger.shared.fetchAllLogs()
+        var result1 = false
         if(log?.count == 1) {
-            XCTAssertTrue(log?[0].message ?? "" == "Message1")
+            let message = log?[0].message ?? ""
+            result1 = message == "Message1"
         }
+        XCTAssertTrue(result1)
         InstabugLogger.shared.deleteAllLogs()
         let invalidMessage = String(repeating: "A", count: 1001)
         InstabugLogger.shared.log(1, message: invalidMessage)
-        let resultMessage = String(repeating: "A", count: 999) + "..."
-        XCTAssertTrue(log?[0].message ?? "" == resultMessage)
+        log = InstabugLogger.shared.fetchAllLogs()
+        let resultMessage = String(repeating: "A", count: 1000) + "..."
+        let result2 = log?[0].message ?? "" == resultMessage
+        XCTAssertTrue(result2)
     }
     
     

@@ -10,11 +10,8 @@ import CoreData
 
 public class InstabugLogger {
     public static var shared = InstabugLogger()
-    var logger: Logger!
-    
-    public func configure(mainContext: NSManagedObjectContext, backgroundContext: NSManagedObjectContext) {
-            logger = Logger(mainContext: mainContext, backgroundContext: backgroundContext)
-    }
+    var logger = Logger()
+
     // MARK: Logging
     public func log(_ level: Int64, message: String) {
         logger.addLogElement(message: message, level: level)
