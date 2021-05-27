@@ -18,18 +18,14 @@ public class InstabugLogger {
     }
 
     // MARK: Fetch logs
-    #warning("Replace Any with an appropriate type")
     public func fetchAllLogs() -> [LogElement]? {
         return logger.getLog()
     }
     
     public func deleteAllLogs() {
-        if(logger != nil) {
-            logger.deleteLog()
-        }
+        logger.deleteLog()
     }
     
-    #warning("Replace Any with an appropriate type")
     public func fetchAllLogs(completionHandler: (Any)->Void) {
         fatalError("Not implemented")
     }

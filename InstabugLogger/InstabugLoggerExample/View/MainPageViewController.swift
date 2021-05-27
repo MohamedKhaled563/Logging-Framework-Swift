@@ -9,11 +9,17 @@ import UIKit
 import InstabugLogger
 
 class MainPageViewController: UIViewController {
+    // Properties
+    //
     let instabugLogger = InstabugLogger.shared
     
+    // IBOutlets
+    //
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var levelTextField: UITextField!
     
+    // Methods
+    //
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -25,6 +31,8 @@ class MainPageViewController: UIViewController {
         view.endEditing(true)
     }
     
+    // IBActions
+    //
     @IBAction func addButtonPressed(_ sender: Any) {
         if (levelTextField.text == "") {
             let alert = UIAlertController(title: "Error", message: "Please insert level number", preferredStyle: .alert)
@@ -44,6 +52,8 @@ class MainPageViewController: UIViewController {
     }
 }
 
+// MARK:- UITectField delegate
+//
 extension MainPageViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

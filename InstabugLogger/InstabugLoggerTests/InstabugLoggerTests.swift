@@ -13,10 +13,6 @@ class InstabugLoggerTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        let container = NSPersistentContainer(name: "Log")
-        let mainContext = container.viewContext
-        let backgroundContext = container.newBackgroundContext()
     }
 
     override func tearDownWithError() throws {
@@ -69,6 +65,5 @@ class InstabugLoggerTests: XCTestCase {
         let result2 = log?[0].message ?? "" == resultMessage
         XCTAssertTrue(result2)
     }
-    
     
 }

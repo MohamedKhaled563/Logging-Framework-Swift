@@ -25,7 +25,6 @@ struct LoggerService {
         return newbackgroundContext
     }()
     // MARK: - Core Data stack
-
     lazy var persistentContainer: NSPersistentContainer = {
         let instabugLoggerBundle = Bundle(identifier: "com.MohamedKhaled.InstabugLogger")
         let modelURL = instabugLoggerBundle!.url(forResource: "Log", withExtension: ".momd")
@@ -39,7 +38,6 @@ struct LoggerService {
     }()
     
     // MARK: - Core Data Saving support
-    
     mutating func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -87,6 +85,8 @@ struct LoggerService {
         }
     }
     
+    // Ensures that saved items doesn't exceed 1000 element
+    //
     mutating func checkStorageLimit() {
         backgroundContext.performAndWait {
             if var elements = savedElements {
@@ -104,9 +104,11 @@ struct LoggerService {
     
     mutating func deleteEarliestElement(_ elements: inout [LogElement]) {
         backgroundContext.performAndWait {
+            // Sort the elements array in order to execute the function in o(sort) rather than o(n^2)
             elements.sort {
                 $0.timestamp! > $1.timestamp!
             }
+            // Deleting in o(1)
             backgroundContext.delete(elements.last!)
             elements.removeLast()
         }

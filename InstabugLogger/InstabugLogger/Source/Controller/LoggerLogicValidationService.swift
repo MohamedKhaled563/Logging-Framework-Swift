@@ -9,6 +9,7 @@ import Foundation
 
 struct LoggerLogicValidationService {
     func validateMessage(_ message: String) -> Bool{
-        return message.count > 1000
+        let maximumNumberOfCharacters = 1000
+        return message.count > maximumNumberOfCharacters
     }
 }

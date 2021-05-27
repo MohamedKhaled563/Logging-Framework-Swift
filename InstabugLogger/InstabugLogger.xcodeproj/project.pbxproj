@@ -159,9 +159,7 @@
 			children = (
 				96702E58265EE9CF00F04391 /* AppDelegate.swift */,
 				96702E5A265EE9CF00F04391 /* SceneDelegate.swift */,
-				96702E5C265EE9CF00F04391 /* MainPageViewController.swift */,
-				96BAC1A9265F14FA00CD19B8 /* LogsViewController.swift */,
-				96702E5E265EE9CF00F04391 /* Main.storyboard */,
+				96BAC1D7266041EC00CD19B8 /* View */,
 				96702E64265EE9D300F04391 /* Assets.xcassets */,
 				96702E66265EE9D300F04391 /* LaunchScreen.storyboard */,
 				96702E69265EE9D300F04391 /* Info.plist */,
@@ -174,6 +172,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96BAC1D7266041EC00CD19B8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				96BAC1A9265F14FA00CD19B8 /* LogsViewController.swift */,
+				96702E5C265EE9CF00F04391 /* MainPageViewController.swift */,
+				96702E5E265EE9CF00F04391 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
