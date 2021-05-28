@@ -26,7 +26,7 @@ public class InstabugLogger {
         logger.deleteLog()
     }
     
-    public func fetchAllLogs(completionHandler: (Any)->Void) {
-        fatalError("Not implemented")
+    public func fetchAllLogs(completionHandler: ([LogElement])->Void) {
+        logger.getLogAndPerform(completionHandler: completionHandler)
     }
 }

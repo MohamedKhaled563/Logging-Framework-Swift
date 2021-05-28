@@ -18,6 +18,7 @@ struct Logger {
     //
     
     // Add element to the log
+    //
     mutating func addLogElement(message: String, level: Int64) {
         var verifiedMessage = message
         validateMessage(message: &verifiedMessage)
@@ -25,6 +26,7 @@ struct Logger {
     }
     
     // Validate the message length --> if size > 1000, replace the rest with "..."
+    //
     func validateMessage(message: inout String) {
         if (validation.validateMessage(message)) {
             let maximumNumberOfCharacters = 1000
@@ -34,10 +36,20 @@ struct Logger {
     }
 
     // Returns saved log
+    //
     mutating func getLog() -> [LogElement]? {
         return loggerService.fetch()
     }
 
+    // Returns saved log and performs the passes completion handler
+    //
+    mutating func getLogAndPerform(completionHandler: ([LogElement])->Void ) {
+        let log = getLog()
+        if let safeLog = log {
+            completionHandler(safeLog)
+        }
+    }
+    
     mutating func printLog() {
         let log = getLog()
         if let safeLog = log {

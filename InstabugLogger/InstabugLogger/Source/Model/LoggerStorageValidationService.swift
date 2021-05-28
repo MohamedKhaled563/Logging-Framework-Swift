@@ -9,7 +9,7 @@ import Foundation
 
 struct LoggerStorageValidationService {
     func checkStorageLimit(of elements: [LogElement]) -> Bool {
-        let maximumNumberOfCharacters = 1000
-        return elements.count > maximumNumberOfCharacters
+        let maximumNumberOfElements = 1000
+        return elements.count > maximumNumberOfElements
     }
 }

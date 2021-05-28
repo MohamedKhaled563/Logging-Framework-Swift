@@ -75,6 +75,13 @@ struct LoggerService {
         return savedElements
     }
     
+    mutating func fetchAndPerform(completionHandler: ([LogElement]) -> Void) {
+        let log = fetch()
+        if let safeLog = log {
+            completionHandler(safeLog)
+        }
+    }
+    
     mutating func deleteAll() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = LogElement.fetchRequest()
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
@@ -106,7 +113,7 @@ struct LoggerService {
         backgroundContext.performAndWait {
             // Sort the elements array in order to execute the function in o(sort) rather than o(n^2)
             elements.sort {
-                $0.timestamp! > $1.timestamp!
+                $0.timestamp ?? Date() > $1.timestamp ?? Date()
             }
             // Deleting in o(1)
             backgroundContext.delete(elements.last!)

@@ -14,7 +14,6 @@
 		96139B51265EDD7100DE1651 /* LoggerLogicValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96139B4A265EDD7100DE1651 /* LoggerLogicValidationService.swift */; };
 		96139B52265EDD7100DE1651 /* LoggerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96139B4C265EDD7100DE1651 /* LoggerService.swift */; };
 		96139B53265EDD7100DE1651 /* LoggerStorageValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96139B4D265EDD7100DE1651 /* LoggerStorageValidationService.swift */; };
-		96139B54265EDD7100DE1651 /* Log.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96139B4E265EDD7100DE1651 /* Log.xcdatamodeld */; };
 		96702E49265EE2DD00F04391 /* InstabugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96702E48265EE2DD00F04391 /* InstabugLogger.swift */; };
 		96702E59265EE9CF00F04391 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96702E58265EE9CF00F04391 /* AppDelegate.swift */; };
 		96702E5B265EE9CF00F04391 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96702E5A265EE9CF00F04391 /* SceneDelegate.swift */; };
@@ -23,6 +22,7 @@
 		96702E65265EE9D300F04391 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96702E64265EE9D300F04391 /* Assets.xcassets */; };
 		96702E68265EE9D300F04391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96702E66265EE9D300F04391 /* LaunchScreen.storyboard */; };
 		96BAC1AA265F14FA00CD19B8 /* LogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BAC1A9265F14FA00CD19B8 /* LogsViewController.swift */; };
+		96BAC2252660CB8300CD19B8 /* Log.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 96BAC2232660CB8300CD19B8 /* Log.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,6 @@
 		96139B4A265EDD7100DE1651 /* LoggerLogicValidationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerLogicValidationService.swift; sourceTree = "<group>"; };
 		96139B4C265EDD7100DE1651 /* LoggerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerService.swift; sourceTree = "<group>"; };
 		96139B4D265EDD7100DE1651 /* LoggerStorageValidationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggerStorageValidationService.swift; sourceTree = "<group>"; };
-		96139B4F265EDD7100DE1651 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		96702E48265EE2DD00F04391 /* InstabugLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstabugLogger.swift; sourceTree = "<group>"; };
 		96702E56265EE9CF00F04391 /* InstabugLoggerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstabugLoggerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96702E58265EE9CF00F04391 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		96702E67265EE9D300F04391 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96702E69265EE9D300F04391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96BAC1A9265F14FA00CD19B8 /* LogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsViewController.swift; sourceTree = "<group>"; };
+		96BAC2242660CB8300CD19B8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +149,7 @@
 			children = (
 				96139B4C265EDD7100DE1651 /* LoggerService.swift */,
 				96139B4D265EDD7100DE1651 /* LoggerStorageValidationService.swift */,
-				96139B4E265EDD7100DE1651 /* Log.xcdatamodeld */,
+				96BAC2232660CB8300CD19B8 /* Log.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				96702E49265EE2DD00F04391 /* InstabugLogger.swift in Sources */,
 				96139B51265EDD7100DE1651 /* LoggerLogicValidationService.swift in Sources */,
 				96139B52265EDD7100DE1651 /* LoggerService.swift in Sources */,
-				96139B54265EDD7100DE1651 /* Log.xcdatamodeld in Sources */,
+				96BAC2252660CB8300CD19B8 /* Log.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,12 +669,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		96139B4E265EDD7100DE1651 /* Log.xcdatamodeld */ = {
+		96BAC2232660CB8300CD19B8 /* Log.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				96139B4F265EDD7100DE1651 /* Model.xcdatamodel */,
+				96BAC2242660CB8300CD19B8 /* Model.xcdatamodel */,
 			);
-			currentVersion = 96139B4F265EDD7100DE1651 /* Model.xcdatamodel */;
+			currentVersion = 96BAC2242660CB8300CD19B8 /* Model.xcdatamodel */;
 			path = Log.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
