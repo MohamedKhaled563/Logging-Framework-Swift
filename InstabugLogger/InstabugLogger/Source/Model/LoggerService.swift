@@ -8,6 +8,8 @@
 import UIKit
 import CoreData
 
+// Responsible for dealing with CoreData
+//
 struct LoggerService {
     var savedElements: [LogElement]?
     let validation = LoggerStorageValidationService()

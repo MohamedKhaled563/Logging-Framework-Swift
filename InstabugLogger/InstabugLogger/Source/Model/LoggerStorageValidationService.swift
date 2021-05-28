@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Validated the maximum number of stored elements <= maximumNumberOfElements
+//
 struct LoggerStorageValidationService {
     func checkStorageLimit(of elements: [LogElement]) -> Bool {
         let maximumNumberOfElements = 1000
